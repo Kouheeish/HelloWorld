@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use PhpSpreadsheetWrapper\PhpSpreadsheetWrapper;
 
 /**
  * Hobbies Controller
@@ -50,6 +51,11 @@ class HobbiesController extends AppController
     {
         $hobby = $this->Hobbies->newEntity();
         if ($this->request->is('post')) {
+          $a = ($this->request->getData()["name"]["tmp_name"]);
+          debug($a);
+          $PhpSpreadsheetWrapper = new PhpSpreadsheetWrapper($a);
+          debug($PhpSpreadsheetWrapper->getVal(1,1,0));
+          dd($this->request->getData());
             $hobby = $this->Hobbies->patchEntity($hobby, $this->request->getData());
             if ($this->Hobbies->save($hobby)) {
                 $this->Flash->success(__('The hobby has been saved.'));

@@ -13,11 +13,11 @@
     </ul>
 </nav>
 <div class="hobbies form large-9 medium-8 columns content">
-    <?= $this->Form->create($hobby) ?>
+    <?= $this->Form->create($hobby,["type"=>"file"]) ?>
     <fieldset>
         <legend><?= __('Add Hobby') ?></legend>
         <?php
-            echo $this->Form->control('name');
+            echo $this->Form->control('name',["type"=>"file"]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
